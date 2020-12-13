@@ -31,7 +31,7 @@ def play_game():
 
 
     if winner == "X" or winner == "O":     # when the game has ended
-        print (winner + " Wins, Well done! ")
+        print (winner + " Player Wins, Well done! ")
     elif winner == None:   # if there is no winner 
         print ("The game has finished in a tie.")
 
@@ -51,7 +51,76 @@ def check_gameover():
     return
 
 def winner_checking():
+    global winner
+    
+    row_winner = check_rows()
+
+    column_winner = check_columns()
+    
+    diagonal_winner = check_diagonals()
+    
+    if row_winner:
+        winner = row_winner
+    elif column_winner:
+        winner = column_winner
+    elif diagonal_winner:
+        winner = diagonal_winner
+    else:
+        winner = None
     return
+
+def check_rows():
+# global "game still in progress"
+    global game_in_progress
+
+    row_a = board[0] == board[1] == board [2] != "-"
+    row_b = board[3] == board[4] == board [5] != "-"
+    row_c = board[6] == board[7] == board [8] != "-"
+
+    if row_a or row_b or row_c:
+        game_in_progress = False
+    if row_a:
+        return board[0]
+    elif row_b:
+        return board[3]
+    elif row_c:
+        return board[6]
+    return
+
+def check_columns():
+    global game_in_progress
+
+    column_a = board[0] == board[3] == board [6] != "-"
+    column_b = board[1] == board[4] == board [7] != "-"
+    column_c = board[2] == board[5] == board [8] != "-"
+
+    if column_a or column_b or column_c:
+        game_in_progress = False
+    if column_a:
+        return board[0]
+    elif column_b:
+        return board[1]
+    elif column_c:
+        return board[2]
+    return
+    
+
+def check_diagonals():
+    global game_in_progress
+
+    diag_a = board[0] == board[4] == board [8] != "-"
+    diag_b = board[6] == board[4] == board [2] != "-"
+  
+
+    if diag_a or diag_b:
+        game_in_progress = False
+    if diag_a:
+        return board[8]
+    elif diag_b:
+        return board[2]
+    return
+    
+    
 
 def tie_checking():
     return
