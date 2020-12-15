@@ -27,7 +27,7 @@ def play_game():
         
         check_gameover() # function to check if the game is complete
         
-        change_player()  # changes player if above funtions have been satisfied 
+        change_player() # changes player if above funtions have been satisfied 
 
 
     if winner == "X" or winner == "O":     # when the game has ended
@@ -43,7 +43,7 @@ def player_turn(current_player):
 
     position = int(position) -1   #Changes position from a sting to an interger, 1 has been subtracted from it to get the correct index
 
-    board[position] = "X"  # x will be displayed in the chosen index position
+    board[position] = current_player  # x will be displayed in the chosen index position
     show_board()  # show board function called to display updated board with x marked in position chosen
 
 
@@ -129,24 +129,13 @@ def tie_checking():
 
 def change_player():
     global current_player
-    if current_player == "X":
-        current_player = "O"
-    elif current_player == "O":
-        current_player = "X"
+    if current_player== "X":
+        current_player= "O"
+    elif current_player =="O":
+        current_player= "X"
     return
 
 
 play_game()
 
 
-
-# board
-# diplay board 
-# play game
-# handle player turn
-# check win
- # check rows
- # check columns
- # check diagnals 
-# check tie
-# change player
