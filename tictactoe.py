@@ -31,7 +31,7 @@ def play_game():
 
 
     if winner == "X" or winner == "O":     # when the game has ended
-        print (winner + " Player Wins, Well done! ")
+        print ("###### Tic Tac Toe Champion is Player " + winner + " , Congradulations! ######")
     elif winner == None:   # if there is no winner 
         print ("The game has finished in a tie.")
     
@@ -39,10 +39,23 @@ def play_game():
 
 
 def player_turn(current_player):
-    position = input("Pick a position on the board from 1-9: ")
 
-    position = int(position) -1   #Changes position from a sting to an interger, 1 has been subtracted from it to get the correct index
+    position = input(current_player + " Player please choose a position on the board from 1-9: ")
 
+    user_input = False  # user_input is a boolean value which 
+    while not user_input:
+        
+        while position not in ["1","2","3","4","5","6","7","8","9"]: # It 
+            
+            position = input()
+        
+        position = int(position) -1  #Changes position from a sting to an interger, 1 will be subtracted from input it to get the correct index on the board. 
+    
+        if board[position] == "-": # if the choosen position is free and the True boolean it will break the loop
+            user_input = True
+        else:   # otherwise the player will be asked to choose a new position
+            print("Board position already taken, please choose a different position")
+    
     board[position] = current_player  # x will be displayed in the chosen index position
     show_board()  # show board function called to display updated board with x marked in position chosen
 
@@ -120,11 +133,12 @@ def check_diagonals():
         return board[8]
     elif diag_b:
         return board[2]
-    return
-    
-    
+    return   
 
 def tie_checking():
+    global game_in_progress
+    if "-" not in board:
+        game_in_progress = False
     return
 
 def change_player():
