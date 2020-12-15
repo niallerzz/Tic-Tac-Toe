@@ -34,6 +34,8 @@ def play_game():
         print (winner + " Player Wins, Well done! ")
     elif winner == None:   # if there is no winner 
         print ("The game has finished in a tie.")
+    
+   
 
 
 def player_turn(current_player):
@@ -126,6 +128,11 @@ def tie_checking():
     return
 
 def change_player():
+    global current_player
+    if current_player == "X":
+        current_player = "O"
+    elif current_player == "O":
+        current_player = "X"
     return
 
 
