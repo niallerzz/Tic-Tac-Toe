@@ -144,19 +144,19 @@ play_game()
 
 
 
-def Ai_player():
-    global board
-    possibleMoves = [x for x, letter in enumerate(board) if letter == "-" and x != 0]
-    move = 0
+# def Ai_player():
+#     global board
+#     possibleMoves = [x for x, letter in enumerate(board) if letter == "-" and x != 0]
+#     move = 0
 
-    cornersOpen = []
+#     cornersOpen = []
   
-    edgesOpen = []
+#     edgesOpen = []
     
     
-    def selectRandom(li):
-    import random
-    ln = len(li)
-    r = random.randrange(0,ln)
-    return li[r]
+#     def selectRandom(li):
+#     import random
+#     ln = len(li)
+#     r = random.randrange(0,ln)
+#     return li[r]
     
